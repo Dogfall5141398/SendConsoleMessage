@@ -10,6 +10,7 @@
 #Should the plugin be activated?
 enabled: true
 
+#The name of the command
 CommandName: SendConsoleMessage
 
 #Permission required to use the command:
@@ -23,6 +24,9 @@ CommandAliases:
   
 #The prefix that will appear before the message on the console will be whatever you write inside the "", or nothing if you leave it as it is.
 ConsoleMessagePrefix: ""
+
+#Prevent the " <Username> issued the command /Sendconsolemessage msg "  entry on the console, to avoid sending duplicates to the console when the command is executed by a player.
+PreventDoubleMessages: true
 
 #Should bStats remain enabled? bStats sends annonymous data about the server, helping us feel motivated and make more informed decisions about the plugin's future. You can find all the information collected here : https://bstats.org/plugin/bukkit/ExplosionKnockdown/9738
 bStats: true

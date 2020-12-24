@@ -7,11 +7,12 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.command.defaults.BukkitCommand;
 
-public class SendConsoleMessageCommand extends BukkitCommand {
+/**The command that send the message to the console*/
+public class SendConsoleMessageCmd extends BukkitCommand {
     private final ConsoleCommandSender consoleSender;
     private final String consolePrefix;
     
-    public SendConsoleMessageCommand(String commandName, String permissionNode, String consolePrefix, List<String> aliases, ConsoleCommandSender consoleSender){
+    public SendConsoleMessageCmd(String commandName, String permissionNode, String consolePrefix, List<String> aliases, ConsoleCommandSender consoleSender){
         super(commandName,"Sends a message to the console","SendConsoleMessage <Your message>", aliases);
         this.consoleSender = consoleSender;
         this.consolePrefix = ChatColor.translateAlternateColorCodes('&',consolePrefix);
@@ -37,7 +38,6 @@ public class SendConsoleMessageCommand extends BukkitCommand {
     @Override
     public List<String> tabComplete(CommandSender sender, String alias, String[] args) throws IllegalArgumentException {
         return Lists.newArrayList("message");
-        //return super.tabComplete(sender, alias, args); 
     }
 }
 
