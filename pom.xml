@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.github.onyxiansoul</groupId>
+    <artifactId>SendConsoleMessage</artifactId>
+    <name>${project.artifactId}</name>
+    <version>1.0.0</version>
+    <packaging>jar</packaging>
+    <url>https://www.spigotmc.org/resources/authors/onyxiansoul.667504/</url> <!--TODO: Update to resource thread.-->
+    <description>Adds a command to send messages to the console!</description>
+    <developers>
+      <developer>
+        <name>OnyxianSoul</name>
+        <email>onyxiansoul@gmail.com</email>
+        <url>https://www.spigotmc.org/resources/authors/onyxiansoul.667504/</url>
+      </developer>
+    </developers>
+    
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Log4j (version used by MC 1.16.4) -->
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.8.1</version>
+        </dependency>
+
+    </dependencies>
+    
+    <build>
+        <!-- Allow the usage of maven placeholders, such as ${project.version} in all the resources (plugin.yml, config.yml, etc)  -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory> 
+                <filtering>true</filtering>
+             </resource>
+        </resources>
+        
+      <!--Create ${artifactId.lowercase} placeholder-->  
+      <plugins>
+        <plugin>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>build-helper-maven-plugin</artifactId>
+            <version>3.0.0</version>
+            <executions>
+             <execution>
+              <id>create-artifactId.lowercase</id>
+              <phase>initialize</phase>
+              <goals>
+               <goal>regex-property</goal>
+              </goals>
+              <configuration>
+               <name>artifactId.lowercase</name>
+               <value>${project.artifactId}</value>
+               <regex>${project.artifactId}</regex>
+               <replacement>${project.artifactId}</replacement>
+               <toLowerCase>true</toLowerCase>
+               <failIfNoMatch>false</failIfNoMatch>
+               <fileSet/>
+               <source/>
+              </configuration>
+             </execution>
+            </executions>
+        </plugin>
+        
+        <!--Shade things required for the plugin to work inside the jar, for example bStats.-->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>3.1.0</version>
+          <configuration>
+            <!-- Prevent META-INF folder from being included. -->
+            <filters>
+                <filter>
+                <artifact>*:*</artifact>
+                <excludes>
+                    <exclude>META-INF/**</exclude>
+                </excludes>
+                </filter>
+            </filters>
+            <!-- Relocate the resources to prevent clashing with other plugins.-->
+            <relocations>
+              <relocation>
+                <pattern>org.bstats</pattern>
+                <shadedPattern>com.gmail.onyxiansoul.playerfallpotioneffects.shaded.org.bstats</shadedPattern>
+              </relocation>
+            </relocations>
+          </configuration>
+          <executions>
+            <execution>
+              <!--Make the shading happen during maven package-->
+              <phase>package</phase>
+              <goals>
+                <goal>shade</goal>
+              </goals>
+              <!--Prevent an unnecesairy step during the compilation-->
+              <configuration>
+                  <createDependencyReducedPom>false</createDependencyReducedPom>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+      </plugins>
+    </build>
+    
+    <!--Assign enviromental variables.-->
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+</project>
