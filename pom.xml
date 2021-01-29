@@ -36,7 +36,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.4-R0.1-SNAPSHOT</version>
+            <version>1.16.5-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <!-- Log4j (version used by MC 1.16.4) -->
@@ -88,6 +88,24 @@
                <source/>
               </configuration>
              </execution>
+            </executions>
+        </plugin>
+        
+        <!--Download javadocs & sources for dependancie (with dependency:sources command)-->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-dependency-plugin</artifactId>
+            <version>3.1.2</version>
+            <executions>
+                <execution>
+                    <goals>
+                        <goal>sources</goal>
+                        <goal>resolve</goal>
+                    </goals>
+                    <configuration>
+                        <classifier>javadoc</classifier>
+                    </configuration>
+                </execution>
             </executions>
         </plugin>
         
