@@ -139,9 +139,14 @@
               <goals>
                 <goal>shade</goal>
               </goals>
-              <!--Prevent an unnecesairy step during the compilation-->
               <configuration>
+                    <!--Prevent an unnecesairy step during the compilation-->
                   <createDependencyReducedPom>false</createDependencyReducedPom>
+                  <!---Make the name be just the plugin name-->
+                  <finalName>${project.artifactId}</finalName>
+                  <!---Make the output directory be our test directory. ../ just means parent folder. In my case this is the relative path that points to my test server-->
+                  <!---<outputDirectory>../../Minecraft/Development Server/plugins</outputDirectory>-->
+                  <outputFile>../../../Minecraft/Development Server/plugins/${project.artifactId}.jar</outputFile>
               </configuration>
             </execution>
           </executions>
