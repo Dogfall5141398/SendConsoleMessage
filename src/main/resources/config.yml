@@ -1,6 +1,6 @@
 #Hey there! This is the config file of the SendConsoleMessage plugin. Please configure it to your hearts content :)
 
-#If you get any errors or something doesnt work as expected, please check the console and please make sure there aren't any problems with the yaml formatting
+#If you get any errors or something doesn't work as expected, please check the console and please make sure there aren't any problems with the yaml formatting
 #You can check YAML formatting with this page https://yaml-online-parser.appspot.com/
 
 #If the plugin is still acting up, please reach out at the plugin discussion and I'll give you a hand :)
@@ -14,7 +14,7 @@ enabled: true
 CommandName: SendConsoleMessage
 
 #Permission required to use the command:
-PermissionRequired: sendConsoleMessage.sendMessage
+PermissionRequired: sendconsolemessage.sendmessage
 
 #All the alternative commands to send a console message.
 CommandAliases:
@@ -25,8 +25,9 @@ CommandAliases:
 #The prefix that will appear before the message on the console will be whatever you write inside the "", or nothing if you leave it as it is.
 ConsoleMessagePrefix: ""
 
-#Prevent the " <Username> issued the command /Sendconsolemessage msg "  entry on the console, to avoid sending duplicates to the console when the command is executed by a player.
+#Prevents the " <Username> issued the command /Sendconsolemessage msg "  entry on the console, to avoid sending duplicates to the console when the command is executed by a player.
 PreventDoubleMessages: true
 
-#Should bStats remain enabled? bStats sends annonymous data about the server, helping us feel motivated and make more informed decisions about the plugin's future. You can find all the information collected here : https://bstats.org/plugin/bukkit/ExplosionKnockdown/9738
+#Should bStats remain enabled? bStats sends annonymous data about the server, helping us feel motivated and make more informed decisions about the plugin's future.
+#You can find all the information collected here : https://bstats.org/plugin/bukkit/SendConsoleMessage/9750
 bStats: true
