@@ -4,9 +4,9 @@
     <groupId>com.github.onyxiansoul</groupId>
     <artifactId>SendConsoleMessage</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <packaging>jar</packaging>
-    <url>https://www.spigotmc.org/resources/authors/onyxiansoul.667504/</url> <!--TODO: Update to resource thread.-->
+    <url>https://www.spigotmc.org/resources/sendconsolemessage.88466/</url> <!--TODO: Update to resource thread.-->
     <description>Adds a command to send messages to the console!</description>
     <developers>
       <developer>
