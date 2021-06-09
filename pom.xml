@@ -4,7 +4,7 @@
     <groupId>com.github.onyxiansoul</groupId>
     <artifactId>SendConsoleMessage</artifactId>
     <name>${project.artifactId}</name>
-    <version>1.0.2</version>
+    <version>2.0.0</version>
     <packaging>jar</packaging>
     <url>https://www.spigotmc.org/resources/sendconsolemessage.88466/</url> <!--TODO: Update to resource thread.-->
     <description>Adds a command to send messages to the console!</description>
@@ -113,7 +113,7 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.3.0-SNAPSHOT</version>
           <configuration>
             <!-- Prevent META-INF folder from being included. -->
             <filters>
@@ -145,8 +145,8 @@
                   <!---Make the name be just the plugin name-->
                   <finalName>${project.artifactId}</finalName>
                   <!---Make the output directory be our test directory. ../ just means parent folder. In my case this is the relative path that points to my test server-->
-                  <!---<outputDirectory>../../Minecraft/Development Server/plugins</outputDirectory>-->
-                  <outputFile>../../../Minecraft/Development Server/plugins/${project.artifactId}.jar</outputFile>
+                  <!---<outputDirectory>../../Minecraft/DevelopmentServer/plugins</outputDirectory>-->
+                  <outputFile>../../../Minecraft/DevelopmentServer/plugins/${project.artifactId}.jar</outputFile>
               </configuration>
             </execution>
           </executions>
@@ -157,8 +157,14 @@
     <!--Assign enviromental variables.-->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
     </properties>
-
+    <!--Provide snapshot maven shade plugin-->
+    <pluginRepositories>
+      <pluginRepository>
+        <id>apache.snapshots</id>
+        <url>https://repository.apache.org/snapshots/</url>
+      </pluginRepository>
+    </pluginRepositories>
 </project>
