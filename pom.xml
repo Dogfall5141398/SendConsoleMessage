@@ -4,7 +4,7 @@
     <groupId>com.github.onyxiansoul</groupId>
     <artifactId>SendConsoleMessage</artifactId>
     <name>${project.artifactId}</name>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <packaging>jar</packaging>
     <url>https://www.spigotmc.org/resources/sendconsolemessage.88466/</url> <!--TODO: Update to resource thread.-->
     <description>Adds a command to send messages to the console!</description>
@@ -36,7 +36,7 @@
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.16.5-R0.1-SNAPSHOT</version>
+            <version>1.17-R0.1-SNAPSHOT</version>
             <scope>provided</scope>
         </dependency>
         <!-- Log4j (version used by MC 1.16.4) -->
